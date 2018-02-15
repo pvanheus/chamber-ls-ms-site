@@ -8,3 +8,11 @@ git:
   lfs_skip_smudge: true
 script: make docker-build
 after_script: ls -lah build/
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  local-dir: build
+  on:
+    branch: master
